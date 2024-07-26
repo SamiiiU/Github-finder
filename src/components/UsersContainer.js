@@ -1,30 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const UsersContainer = ({ users } , {search}) => {
+const UsersContainer = ({ users } ) => {
    
   return (
-    <div className='flex flex-wrap gap-5 justify-center py-5'>
+    <div className='flex flex-wrap justify-center gap-5 py-5'>
       {Array.isArray(users) && users.map((user, idx) =>
-          user.login ? (
+          
           <div key={idx} className='flex w-[200px] border border-gray-500
-          bg-gray-900 p-4 flex-col items-center'>
+          bg-gray-800 p-4 flex-col items-center animate-fadeup'>
 
-          <img src={user.avatar_url} alt={`User ${idx}`} className='w-24
-           border-4 border-teal-400 rounded-full ' />
+          <img src={user.avatar_url} alt={`User ${idx}`} className='w-24 border-4 border-teal-400 rounded-full ' />
 
           <h1 className='text-xl'>{user.login}</h1> 
-
-          <span className='text-gray-200 bg-teal-600 my-3 font-semibold block py-1 px-4 tracking-wide rounded cursor-pointer'>
-            View
+          <Link to={`/${user.login}`}>
+          <span className='block px-4 py-1 my-3 font-semibold tracking-wide text-gray-200 bg-teal-600 rounded cursor-pointer'>
+            View  
           </span> 
+          </Link>
           
           
         </div>
-      ) : (
-        <div className='md:text-4xl text-2xl'>
-          No user found by the name {search};
-        </div>
-      ) )}
+      ) }
     </div>
   );
 }

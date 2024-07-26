@@ -1,0 +1,17 @@
+
+
+.animate-fadeup{
+    animation: fade-up 0.5s   ;
+}
+
+@keyframes fade-up {
+    0%{
+        transform: translateY(4rem);
+        opacity: 0;
+    }
+
+    100%{
+        transform: translate(0);
+        opacity: 1;
+    }
+}
